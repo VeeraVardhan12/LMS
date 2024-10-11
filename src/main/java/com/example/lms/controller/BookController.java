@@ -48,10 +48,10 @@ public class BookController {
         return ResponseEntity.ok(books);
     }
 
-//    @GetMapping("/category/{category}")
-//    public List<Book> getBooksByCategory(@PathVariable String category){
-//        return service.getBooksByCategory(category);
-//    }
+    @GetMapping("/category/{category}")
+    public List<Book> getBooksByCategory(@PathVariable String category){
+        return service.getBooksByCategory(category);
+    }
 
     @GetMapping("author/{authorId}")
     public List<Book> getBooksByAuthorId(@PathVariable int authorId){
@@ -63,11 +63,6 @@ public class BookController {
         return service.addBook(book);
     }
 
-//    @PutMapping("/{bookId}/description")
-//    public String updateBookDescription(@PathVariable int bookId,@RequestBody Desc description) throws  Throwable{
-//
-//        return service.updateBookDescription(bookId,description);
-//    }
     @PutMapping
     public ResponseEntity<String> updateBook(@RequestParam int bookId, @RequestBody Map<String,Object> updatedBook){
         String result = service.updateBook(bookId,updatedBook);

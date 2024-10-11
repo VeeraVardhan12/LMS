@@ -74,13 +74,17 @@ public class H2Database implements BookService {
                             .filter(book -> book.getDescription().toLowerCase().contains(value.toLowerCase()))
                             .collect(Collectors.toList());
                     break;
+                case "authorname":
+//                    int authorId = Integer.parseInt(value);
+                    filteredBooks = filteredBooks.stream()
+                            .filter(book -> book.getAuthor().getName().equalsIgnoreCase(value))
+                            .collect(Collectors.toList());
+                    break;
                 case "authorid":
                     int authorId = Integer.parseInt(value);
                     filteredBooks = filteredBooks.stream()
                             .filter(book -> book.getAuthor().getId() == authorId)
                             .collect(Collectors.toList());
-                    break;
-
                 default:
                     break;
             }
